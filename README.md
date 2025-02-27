@@ -155,7 +155,7 @@ rm_Lifting_robot_75B_jaw_description                                # 75B机器�
 
 ```xml
 <?xml version="1.0"?>
-<robot name="agv" xmlns:xacro="http://ros.org/wiki/xacro">
+<robot name="agv" xmlns:xacro="http://www.ros.org/wiki/xacro">
   <!-- Define constants -->
   <xacro:property name="mesh_path"                                 value="package://rm_Lifting_robot_75B_jaw_description/meshes/" />           <!-- 定义属性 -->
   <!-- Macro to define a generic link with mass, inertia, and visual -->
@@ -201,7 +201,7 @@ rm_Lifting_robot_75B_jaw_description                                # 75B机器�
 
 ```xml
 <?xml version="1.0"?>
-<robot name="agv" xmlns:xacro="http://ros.org/wiki/xacro">
+<robot name="agv" xmlns:xacro="http://www.ros.org/wiki/xacro">
 ```
 
 **函数定义**：
@@ -210,7 +210,7 @@ rm_Lifting_robot_75B_jaw_description                                # 75B机器�
 
 - `<robot>`：ROS 定义的机器人描述文件的根元素，`name` 属性表示机器人的名称，可根据具体情况自定义。
 
-- 在使用xacro生成urdf时，根标签`robot`中**必须包含**`xmlns:xacro="http://ros.org/wiki/xacro`。
+- 在使用xacro生成urdf时，根标签`robot`中**必须包含**`xmlns:xacro="http://www.ros.org/wiki/xacro`。
 
 #### 4.1.2 属性定义
 
@@ -267,7 +267,7 @@ rm_Lifting_robot_75B_jaw_description                                # 75B机器�
 
 ```xml
 <?xml version="1.0"?>
-<robot name="rm_Lifting_robot_75B_jaw_description" xmlns:xacro="http://ros.org/wiki/xacro">
+<robot name="rm_Lifting_robot_75B_jaw_description" xmlns:xacro="http://www.ros.org/wiki/xacro">
   <!-- 引入其他xacro文件：地盘、夹爪、升降平台、机械臂及关节 -->
   <xacro:include filename="$(find rm_Lifting_robot_75B_jaw_description)/urdf/agv.urdf.xacro"/>
   <xacro:include filename="$(find rm_Lifting_robot_75B_jaw_description)/urdf/jaw.urdf.xacro"/>
@@ -544,7 +544,7 @@ rm_Lifting_robot_75B_jaw_description                                # 75B机器�
 
    ```xml
    <?xml version="1.0"?>
-   <robot name="rm75" xmlns:xacro="http://ros.org/wiki/xacro">  <!--定义机器人名称为rm75-->
+   <robot name="rm75" xmlns:xacro="http://www.ros.org/wiki/xacro">  <!--定义机器人名称为rm75-->
    ```
 
 2. 定义属性（通常考虑尺寸、颜色、模型路径、PI值等）。
