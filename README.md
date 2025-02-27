@@ -24,18 +24,9 @@
 
 #### 1.1.2 项目目标
 
-1. **模块化设计**：
-   - 将复合升降机器人的各个部件（如底盘、机械臂、升降平台和夹爪）拆分为独立的Xacro文件，便于管理和维护。
-   - 通过模块化设计，实现不同部件的独立开发和测试，同时支持快速组装和配置。
-2. **提高代码可复用性**：
-   - 利用Xacro的宏定义功能，将重复的代码段封装为可复用的模板，减少冗余代码，提高开发效率。
-   - 通过参数化配置，支持不同型号机器人（如RM65-B和RM75-B）的快速开发和调整。
-3. **支持仿真与控制**：
-   - 配置Gazebo仿真环境，确保机器人模型能够在仿真环境中正常运行，并支持控制插件的集成。
-   - 提供完整的仿真和控制流程，包括RVIZ可视化和Gazebo仿真测试，验证机器人模型的正确性和功能完整性。
-4. **文档与教程**：
-   - 提供详细的教程和文档，帮助开发者快速掌握Xacro的使用方法和机器人模型的开发流程。
-   - 通过文档和示例代码，降低开发门槛，促进机器人技术的推广和应用。
+- **模块化**：通过模块化设计，实现不同部件的独立开发和测试，同时支持快速组装和配置。
+- **参数化**：利用Xacro的宏定义功能，将重复的代码段封装为可复用的模板，减少冗余代码，提高开发效率。
+- **易推广**：通过文档和示例代码，降低开发门槛，促进机器人技术的推广和应用。
 
 #### 1.1.3 总结
 
@@ -45,7 +36,7 @@
 
 #### 1.2.1 模块化设计
 
-1. 将机器人拆分为底盘、机械臂、升降平台和夹爪等独立模块，每个模块都有独立的Xacro文件。
+1. 将机器人拆分为底盘、机械臂、升降平台和夹爪等独立模块，每个模块都有独立的Xacro文件，便于管理和维护。
 
 2. 支持独立开发和测试，便于后续的组装和配置。
 
@@ -59,7 +50,7 @@
 
 1. 配置Gazebo仿真环境，确保机器人模型能够在仿真环境中正常运行。
 
-2. 支持控制插件集成，提供完整的仿真和控制流程，包括RVIZ可视化和Gazebo仿真测试。
+2. 支持控制插件集成，提供完整的仿真和控制流程，包括RVIZ可视化和Gazebo仿真测试，验证机器人模型的正确性和功能完整性。
 
 #### 1.2.4 高效开发与维护
 
@@ -85,7 +76,7 @@
 
 ### 3.1 功能包获取
 
-请参考[附录-相关资源获取](#附录-相关资源获取)获取对应功能包，参照如下描述进行集成拓展。本文以RM75B为例进行集成拓展，其他类型机械臂亦可参考此案例进行拼接拓展。<br>
+请参考[附录-相关资源获取](#附录-相关资源获取)获取对应功能包，参照如下描述进行集成拓展。本文以RM75-B为例进行集成拓展，其他类型机械臂亦可参考此案例进行拼接拓展。<br>
 目前仅提供了RM65-B和RM75-B两种类型机械臂的对应功能包，其他类型机械臂请联系技术支持进行获取。
 
 ### 3.2 功能包结构
@@ -149,9 +140,9 @@ rm_Lifting_robot_75B_jaw_description                                # 75B机器�
     └── rm_Lifting_robot_75B_jaw_description.urdf.xacro          # 将各模块的Xacro文件整合成完整的URDF文件
 ```
 
-**以75B机器人描述功能包为例**：
+**以RM75-B机器人描述功能包为例**：
 
-- 在 urdf 文件夹中，我们将机器人模型拆分为**底盘**、**机械臂**、**升降平台**和**夹爪**四个独立的 Xacro （`agv.urdf.xacro`、`jaw.urdf.xacro`、`platform.urdf.xacro`、`rm75.urdf.xacro` ）文件，以便于管理和配置；
+- 在 urdf 文件夹中，我们将机器人模型拆分为**底盘**、**机械臂**、**升降平台**和**夹爪**四个独立的 Xacro （`agv.urdf.xacro`、`jaw.urdf.xacro`、`platform.urdf.xacro`、`rm75.urdf.xacro` ）文件，以便于管理和配置。
 - 在主 Xacro 文件（`rm_Lifting_robot_75B_jaw_description.urdf.xacro`）中将**底盘**、**机械臂**、**升降平台**和**夹爪**四个模块整合为完整的模型。
 - 通过 `common_gazebo.xacro` 文件配置用于 Gazebo 仿真的插件，如控制机器人移动的插件 `libgazebo_ros_control.so`，确保机器人在 Gazebo 中能够接收控制命令并完成相应的动作。
 - 在每个模块均引入 `transmission` 配置，定义机器人关节与控制器之间的传动关系。确保Gazebo中的控制器插件能够正确计算关节的输入/输出，提供更精确的运动控制，模拟实际机器人驱动结构。
@@ -234,7 +225,7 @@ rm_Lifting_robot_75B_jaw_description                                # 75B机器�
 
 - 用于封装URDF中的一些参数，比如PI值、尺寸、颜色、模型路径等，方便调试和修改参数。
 
-- 属性调用：${属性名称}，比如${mesh_path}。
+- 属性调用：`${属性名称}`，比如`${mesh_path}`。
 
 #### 4.1.3 宏定义
 
@@ -266,7 +257,7 @@ rm_Lifting_robot_75B_jaw_description                                # 75B机器�
 
 - 使用 `<xacro:macro>` 标签定义宏，属性 `name` 指定宏名称，`params` 定义宏的参数，当存在多个参数时，参数之间用空格分隔，即`<xacro:macro name="visual_collision" params="mesh color">`。
 
-- 参数调用格式：${参数名}，以上述代码为例，参数调用为${mesh}。
+- 参数调用格式：`${参数名}`，以上述代码为例，参数调用为`${mesh}`。
 
 - 宏调用：`<xacro:宏名称 参数1="xxx" 参数2="xxx" />`，例如，要调用`visual_collision` 宏并传入 `mesh` 参数，可以这样写 `<xacro:visual_collision mesh="base_link.STL" />`。
 
@@ -556,7 +547,7 @@ rm_Lifting_robot_75B_jaw_description                                # 75B机器�
    <robot name="rm75" xmlns:xacro="http://ros.org/wiki/xacro">  <!--定义机器人名称为rm75-->
    ```
 
-2. 定义属性（通常考虑尺寸、颜色、模型路径、PI值等）：
+2. 定义属性（通常考虑尺寸、颜色、模型路径、PI值等）。
 
    ```xml
    <!-- Define constants -->
@@ -591,7 +582,7 @@ rm_Lifting_robot_75B_jaw_description                                # 75B机器�
    </collision>
    ```
 
-4. 将识别出的重复代码段转换为Xacro宏。Xacro宏允许你定义可重用的模板，这些模板可以在文件中多次调用，以减少重复代码并提高可维护性：
+4. 将识别出的重复代码段转换为Xacro宏。Xacro宏允许你定义可重用的模板，这些模板可以在文件中多次调用，以减少重复代码并提高可维护性。
 
    ```xml
    <!-- Macro to define a generic link with mass, inertia, and visual -->
@@ -614,7 +605,7 @@ rm_Lifting_robot_75B_jaw_description                                # 75B机器�
    </xacro:macro>
    ```
 
-5. 在`rm75.urdf.xacro`文件中，用定义好的Xacro宏替换原有的重复代码段。确保替换后的结构保持不变，只改变重复部分的实现方式。即：
+5. 在`rm75.urdf.xacro`文件中，用定义好的Xacro宏替换原有的重复代码段。确保替换后的结构保持不变，只改变重复部分的实现方式。
 
    ```xml
    <link name="arm_base_link1">
@@ -653,7 +644,7 @@ rm_Lifting_robot_75B_jaw_description                                # 75B机器�
    ...
    ```
 
-## 四、 案例验证
+## 五、 案例验证
 
 **方法一：**
 
@@ -686,7 +677,7 @@ roslaunch rm_Lifting_robot_75B_jaw_description display.launch
 
 ![rviz显示配置](pictures/image1.png)
 
-模型显示结果如下图所示：
+模型显示结果如下图所示。
 
 ![rviz显示结果](pictures/image2.png)
 
@@ -707,7 +698,7 @@ source ./devel/setup.bash
 roslaunch rm_Lifting_robot_75B_jaw_description gazebo.launch  
 ```
 
-`gazebo.launch`文件的作用是读取参数服务器里面`robot_description`内容通过`urdf_spawner`节点生成机器人模型，内容如下：
+`gazebo.launch`文件的作用是读取参数服务器里面`robot_description`内容通过`urdf_spawner`节点生成机器人模型，内容如下。
 
 ```xml
 <launch>
@@ -732,7 +723,7 @@ roslaunch rm_Lifting_robot_75B_jaw_description gazebo.launch
 
 至此，机器人模型成功加载至`gazebo`中。
 
-## 五、 视频演示
+## 六、 视频演示
 
 [演示视频](https://ik.imagekit.io/Realman/Video/video.mp4?updatedAt=1740362020561)
 
