@@ -734,19 +734,7 @@ roslaunch rm_Lifting_robot_75B_jaw_description gazebo.launch
 
 ## 五、 视频演示
 
-<style>
-  .video-container {
-    display: flex;
-    justify-content: center; /* 水平方向居中 */
-    align-items: center; /* 垂直方向居中 */
-  }
-</style>
-
-<div class="video-container">
-  <video controls width="720px" height="640px" autoplay loop muted>
-    <source src="https://ik.imagekit.io/Realman/Video/video.mp4?updatedAt=1740362020561" type="video/mp4">
-  </video>
-</div>
+[演示视频](https://ik.imagekit.io/Realman/Video/video.mp4?updatedAt=1740362020561)
 
 ## 附录： 相关资源获取
 
