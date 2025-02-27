@@ -154,7 +154,7 @@ rm_Lifting_robot_75B_jaw_description                                # 75B机器�
 以agv.urdf.xacro为例，一个完整的Xacro文件的语法构成如下:
 
 ```xml
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="utf-8"?>
 <robot name="agv" xmlns:xacro="http://www.ros.org/wiki/xacro">
   <!-- Define constants -->
   <xacro:property name="mesh_path"                                 value="package://rm_Lifting_robot_75B_jaw_description/meshes/" />           <!-- 定义属性 -->
@@ -200,13 +200,13 @@ rm_Lifting_robot_75B_jaw_description                                # 75B机器�
 #### 4.1.1 头文件
 
 ```xml
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="utf-8"?>
 <robot name="agv" xmlns:xacro="http://www.ros.org/wiki/xacro">
 ```
 
 **函数定义**：
 
-- `<?xml version="1.0"?>`:声明XML文件的版本。
+- `<?xml version="1.0"?>`:声明XML文件的版本和编码方式。
 
 - `<robot>`：ROS 定义的机器人描述文件的根元素，`name` 属性表示机器人的名称，可根据具体情况自定义。
 
@@ -225,7 +225,7 @@ rm_Lifting_robot_75B_jaw_description                                # 75B机器�
 
 - 用于封装URDF中的一些参数，比如PI值、尺寸、颜色、模型路径等，方便调试和修改参数。
 
-- 属性调用：`${属性名称}`，比如`${mesh_path}`。
+- 属性调用：{属性名称}，比如{mesh_path}。
 
 #### 4.1.3 宏定义
 
@@ -257,7 +257,7 @@ rm_Lifting_robot_75B_jaw_description                                # 75B机器�
 
 - 使用 `<xacro:macro>` 标签定义宏，属性 `name` 指定宏名称，`params` 定义宏的参数，当存在多个参数时，参数之间用空格分隔，即`<xacro:macro name="visual_collision" params="mesh color">`。
 
-- 参数调用格式：`${参数名}`，以上述代码为例，参数调用为`${mesh}`。
+- 参数调用格式：{参数名}，以上述代码为例，参数调用为{mesh}。
 
 - 宏调用：`<xacro:宏名称 参数1="xxx" 参数2="xxx" />`，例如，要调用`visual_collision` 宏并传入 `mesh` 参数，可以这样写 `<xacro:visual_collision mesh="base_link.STL" />`。
 
@@ -673,7 +673,7 @@ source ./devel/setup.bash
 roslaunch rm_Lifting_robot_75B_jaw_description display.launch
 ```
 
-进入RVIZ页面后，首先将Fixed Frame设置为base_link,点击Add,找到RobotModel，最后点击OK。
+进入RVIZ页面后，首先将Fixed Frame设置为base_link，点击Add，找到RobotModel，最后点击OK。
 
 ![rviz显示配置](pictures/image1.png)
 
