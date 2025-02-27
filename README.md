@@ -142,9 +142,9 @@ rm_Lifting_robot_75B_jaw_description                                # 75B机器�
 
 **以RM75-B机器人描述功能包为例**：
 
-- 在 urdf 文件夹中，我们将机器人模型拆分为**底盘**、**机械臂**、**升降平台**和**夹爪**四个独立的 Xacro （`agv.urdf.xacro`、`jaw.urdf.xacro`、`platform.urdf.xacro`、`rm75.urdf.xacro` ）文件，以便于管理和配置。
-- 在主 Xacro 文件（`rm_Lifting_robot_75B_jaw_description.urdf.xacro`）中将**底盘**、**机械臂**、**升降平台**和**夹爪**四个模块整合为完整的模型。
-- 通过 `common_gazebo.xacro` 文件配置用于 Gazebo 仿真的插件，如控制机器人移动的插件 `libgazebo_ros_control.so`，确保机器人在 Gazebo 中能够接收控制命令并完成相应的动作。
+- 在 urdf 文件夹中，我们将机器人模型拆分为底盘、机械臂、升降平台和夹爪四个独立的 Xacro （`agv.urdf.xacro`、`jaw.urdf.xacro`、`platform.urdf.xacro`、`rm75.urdf.xacro` ）文件，以便于管理和配置。
+- 在主 Xacro 文件（`rm_Lifting_robot_75B_jaw_description.urdf.xacro`）中将底盘、机械臂、升降平台和夹爪四个模块整合为完整的模型。
+- 在 `common_gazebo.xacro` 文件中配置仿真插件，用于 Gazebo 仿真，如控制机器人移动的插件 `libgazebo_ros_control.so`，确保机器人在 Gazebo 中能够接收控制命令并完成相应的动作。
 - 在每个模块均引入 `transmission` 配置，定义机器人关节与控制器之间的传动关系。确保Gazebo中的控制器插件能够正确计算关节的输入/输出，提供更精确的运动控制，模拟实际机器人驱动结构。
 
 ## 四、 代码接口说明
@@ -210,7 +210,7 @@ rm_Lifting_robot_75B_jaw_description                                # 75B机器�
 
 - `<robot>`：ROS 定义的机器人描述文件的根元素，`name` 属性表示机器人的名称，可根据具体情况自定义。
 
-- 在使用xacro生成urdf时，根标签`robot`中**必须包含**`xmlns:xacro="http://www.ros.org/wiki/xacro`。
+- 在使用xacro生成urdf时，根标签`robot`中必须包含`xmlns:xacro="http://www.ros.org/wiki/xacro`。
 
 #### 4.1.2 属性定义
 
@@ -229,7 +229,7 @@ rm_Lifting_robot_75B_jaw_description                                # 75B机器�
 
 #### 4.1.3 宏定义
 
-在 URDF 文件中，通过封装**重复率较高**的代码段到宏（macro）中，可以显著提高代码复用率，并优化代码的整体结构。
+在 URDF 文件中，通过封装重复率较高的代码段到宏（macro）中，可以显著提高代码复用率，并优化代码的整体结构。
 
 ``` xml
  <!-- Macro to define a generic link with mass, inertia, and visual -->
